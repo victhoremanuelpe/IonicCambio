@@ -1,0 +1,84 @@
+<!-- tab3.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configurações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div style="max-width: 500px; margin: 0 auto; width: 100%;">
+
+  <div *ngIf="isLoading" class="ion-text-center ion-padding">
+    <ion-spinner></ion-spinner>
+    <p>Carregando configurações...</p>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Moedas Padrão</ion-card-title>
+        <ion-card-subtitle>Escolha suas moedas padrão para conversão</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Moeda de Origem Padrão</ion-label>
+            <ion-select
+              [(ngModel)]="defaultFromCurrency"
+              (ionChange)="updateDefaultFromCurrency($event)"
+              interface="modal">
+              <ion-select-option
+                *ngFor="let currency of currencyList"
+                [value]="currency.code">
+                {{ currency.code }} - {{ currency.name }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Moeda de Destino Padrão</ion-label>
+            <ion-select
+              [(ngModel)]="defaultToCurrency"
+              (ionChange)="updateDefaultToCurrency($event)"
+              interface="modal">
+              <ion-select-option
+                *ngFor="let currency of currencyList"
+                [value]="currency.code">
+                {{ currency.code }} - {{ currency.name }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Duração do Cache</ion-card-title>
+        <ion-card-subtitle>Escolha por quanto tempo os dados serão armazenados offline</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-radio-group [(ngModel)]="currentSelection" (ionChange)="updateCacheDuration($event)">
+            <ion-item>
+              <ion-label>1 dia</ion-label>
+              <ion-radio slot="start" value="1day"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>1 semana</ion-label>
+              <ion-radio slot="start" value="1week"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>1 mês</ion-label>
+              <ion-radio slot="start" value="1month"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>
+</ion-content>

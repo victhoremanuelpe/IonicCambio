@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>CambioClick</ion-title>
+    <ion-badge slot="end" color="warning" *ngIf="isOffline" class="ion-margin-end">
+      Conversões são salvas no cache
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div style="max-width: 500px; margin: 0 auto; width: 100%;">
+
+    <form #conversionForm="ngForm" (ngSubmit)="getExchangeRate()">
+
+
+
+     <ion-card color="transluced">
+      <ion-card-header>
+        <ion-card-subtitle>Selecione um valor</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-input
+        [(ngModel)]="amount"
+        name="amount"
+        type="number"
+        required
+        min="0.01"
+        [errorText]="'Insira um valor válido'"
+      >
+      </ion-input>
+    </ion-card-content>
+  </ion-card>
+
+
+    <div>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>DE</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+      <ion-item>
+        <ion-select
+          [(ngModel)]="fromCurrency"
+          name="fromCurrency"
+          (ionChange)="loadFlag(fromCurrency)"
+          interface="modal">
+
+          <ion-select-option
+          *ngFor="let currency of currencyList"
+          [value]="currency.code"
+        >
+          {{ currency.code }} - {{ currency.name }}
+        </ion-select-option>
+
+        </ion-select>
+        <img [src]="getFlag(fromCurrency)" alt="From flag" *ngIf="fromCurrency" />
+      </ion-item>
+    </ion-card-content>
+    </ion-card>
+
+
+      <ion-card>
+        <ion-button expand="block" color="dark" (click)="swapCurrencies()" type="button">
+          <ion-icon name="swap-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-card>
+
+
+      <ion-card>
+        <ion-card-header>
+        <ion-card-subtitle>PARA</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      <ion-item>
+        <ion-select [(ngModel)]="toCurrency" name="toCurrency" (ionChange)="loadFlag(toCurrency)" interface="modal">
+          <ion-select-option *ngFor="let currency of currencyList" [value]="currency.code">
+            {{ currency.code }} - {{ currency.name }}
+          </ion-select-option>
+        </ion-select>
+        <img [src]="getFlag(toCurrency)" alt="To flag" *ngIf="toCurrency" />
+      </ion-item>
+    </ion-card-content>
+    </ion-card>
+    </div>
+
+
+    <ion-grid class="ion-text-center">
+      <h3>
+      {{ exchangeRateText }}
+    </h3>
+    </ion-grid>
+
+
+    <div class="ion-text-center">
+      <ion-button
+        expand="block"
+        color="dark"
+        type="submit"
+        [disabled]="!conversionForm.valid || amount <= 0"
+      >
+        CONVERTER
+      </ion-button>
+    </div>
+
+  </form>
+
+  </div>
+</ion-content>
