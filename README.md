@@ -1,10 +1,15 @@
 ALUNOS
 
 Wagner Vinícius Cassimiro da Silva - 01615748
+
 Victhor Emanuel Soares Brito - 01615125
+
 Gabryella Tainá Melo Silva - 0161268
+
 Luis Gabriel da Silva Araújo - 01614692
+
 Eduardo Rafael Silva Santos - 01602387
+
 Carlos Eduardo Nogueira Cabral - 01645530
 
 COMANDOS
