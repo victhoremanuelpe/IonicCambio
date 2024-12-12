@@ -11,12 +11,12 @@ COMANDOS
 
 - Baixar Node.js confira se o Node.js foi instalado `node -v`
   
-- Baixar ionic e capacitor com npm install -g @ionic/cli @capacitor/assets confira se o ionic foi instalado `ionic --version`
+- Baixar ionic e capacitor com `npm install -g @ionic/cli @capacitor/assets` confira se o ionic foi instalado `ionic --version`
   
-- Clona repositório do git com o Projeto CambioClick git clone https://github.com/victhoremanuelpe/IonicCambio.git cambio-click
+- Clona repositório do git com o Projeto CambioClick `git clone https://github.com/victhoremanuelpe/IonicCambio.git cambio-click`
   
 - Abrir pasta do projeto cd cambio-click
   
-- Dar um npm install no Projeto
+- Dar um `npm install` no Projeto
   
-- E um ionic serve pra inicializar o server
+- E um `ionic serve` pra inicializar o server
